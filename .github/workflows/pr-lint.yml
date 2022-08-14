@@ -15,8 +15,8 @@ jobs:
       - uses: morrisoncole/pr-lint-action@v1.6.1
         with:
           title-regex: "#[eE][xX]-[0-9]+"
-          on-failed-regex-fail-action: false
-          on-failed-regex-request-changes: false
+          on-failed-regex-fail-action: true
+          on-failed-regex-request-changes: true
           on-failed-regex-create-review: true
           on-failed-regex-comment:
             "This is just an example. Failed regex: `%regex%`!"
