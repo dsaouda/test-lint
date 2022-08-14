@@ -1,0 +1,53 @@
+name: PR Lint
+
+on:
+  pull_request:
+    # By default, a workflow only runs when a pull_request's activity type is opened, synchronize, or reopened. We
+    # explicity override here so that PR titles are re-linted when the PR text content is edited.
+    #
+    # Possible values: https://help.github.com/en/actions/reference/events-that-trigger-workflows#pull-request-event-pull_request
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  pr-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: morrisoncole/pr-lint-action@v1.6.1
+        with:
+          title-regex: "^(fix|breaking|chore|feat!|feat|hotfix)\\(.*\\): .*$"
+          on-failed-regex-fail-action: true
+          on-failed-regex-request-changes: true
+          on-failed-regex-create-review: true
+          on-failed-regex-comment: >
+            Título da sua PR está inválida. Dessa forma a tag não será criada corretamente.
+            O padrão da mensagem deveria ter o padrão da regex: `%regex%`"
+            
+            ### Exemplos de mensagem:
+            
+            
+            fix(CP-100): prevent racing of requests
+            
+            breaking(CP-100): prevent racing of requests
+            
+            chore(CP-100): prevent racing of requests
+            
+            feat(CP-100): prevent racing of requests
+            
+            feat!(CP-100): prevent racing of requests
+            
+            hotfix(CP-100): prevent racing of requests
+            
+            
+            ### Regra do bump
+
+            - fix e hotfix: update patch - 0.0.**1**
+            
+            - feat e chore: update minor - 0.**1**.0
+            
+            - feat! e breaking: update major - **1**.0.0
+
+            ## Mais informações
+
+            https://www.conventionalcommits.org/en/v1.0.0/"
+            
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
