@@ -19,19 +19,28 @@ jobs:
           on-failed-regex-request-changes: true
           on-failed-regex-create-review: true
           on-failed-regex-comment: >
-            Título da sua PR está inválida. Veja o padrão da REGEX: `%regex%`"
-            
-            
-            O Padrão segue https://www.conventionalcommits.org/en/v1.0.0/" com scope.
-            
-            Em scope procure colocar o código da atividade do JIRA.
-            
-            Se não tiver código do jira então siga essa regra: A scope may be provided to a commit’s type, to provide additional contextual information and is contained within parenthesis, e.g., feat(parser): add ability to parse arrays.
+            Título da sua PR está inválida. Dessa forma a tag não será criada corretamente.
+            O padrão da mensagem deveria ter o padrão da regex: `%regex%`"
             
             ### Exemplos de mensagem:
             
-            **fix(CP-100): prevent racing of requests**
+            ```
+            fix(CP-100): prevent racing of requests
+            breaking(CP-100): prevent racing of requests
+            chore(CP-100): prevent racing of requests
+            feat(CP-100): prevent racing of requests
+            feat!(CP-100): prevent racing of requests
+            hotfix(CP-100): prevent racing of requests
+            ```
 
-          on-succeeded-regex-dismiss-review-comment:
-            "This is just an example. Success!"
+            ### Regra do bump
+
+            - fix e hotfix: update patch - 0.0.**1**
+            - feat e chore: update minor - 0.**1**.0
+            - feat! e breaking: update major - **1**.0.0
+
+            ## Mais informações
+
+            https://www.conventionalcommits.org/en/v1.0.0/"
+            
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
