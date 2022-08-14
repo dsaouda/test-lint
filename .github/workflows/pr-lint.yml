@@ -19,7 +19,12 @@ jobs:
           on-failed-regex-request-changes: true
           on-failed-regex-create-review: true
           on-failed-regex-comment:
-            "This is just an example. Failed regex: `%regex%`!"
+            "Título da sua PR está inválida. Veja o padrão da REGEX: `%regex%`!"
+            "O Padrão segue https://www.conventionalcommits.org/en/v1.0.0/" com scope.
+            "Em scope procure colocar o código da atividade do JIRA."
+            "Se não tiver código do jira então siga essa regra: A scope may be provided to a commit’s type, to provide additional contextual information and is contained within parenthesis, e.g., feat(parser): add ability to parse arrays."
+            "Exemplos de mensagem:"
+            "fix(CP-100): prevent racing of requests"
           on-succeeded-regex-dismiss-review-comment:
             "This is just an example. Success!"
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
