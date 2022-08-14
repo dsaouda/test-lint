@@ -26,17 +26,24 @@ jobs:
             
             ```
             fix(CP-100): prevent racing of requests
+            
             breaking(CP-100): prevent racing of requests
+            
             chore(CP-100): prevent racing of requests
+            
             feat(CP-100): prevent racing of requests
+            
             feat!(CP-100): prevent racing of requests
+            
             hotfix(CP-100): prevent racing of requests
             ```
 
             ### Regra do bump
 
             - fix e hotfix: update patch - 0.0.**1**
+            
             - feat e chore: update minor - 0.**1**.0
+            
             - feat! e breaking: update major - **1**.0.0
 
             ## Mais informações
