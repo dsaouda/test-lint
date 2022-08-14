@@ -24,7 +24,7 @@ jobs:
             
             ### Exemplos de mensagem:
             
-            ```
+            
             fix(CP-100): prevent racing of requests
             
             breaking(CP-100): prevent racing of requests
@@ -36,8 +36,8 @@ jobs:
             feat!(CP-100): prevent racing of requests
             
             hotfix(CP-100): prevent racing of requests
-            ```
-
+            
+            
             ### Regra do bump
 
             - fix e hotfix: update patch - 0.0.**1**
